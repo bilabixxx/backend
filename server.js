@@ -20,7 +20,7 @@ const app = express();
 app.use(helmet());
 
 const allowedOrigins = [
-  "https://frontend-d3aovxvl8-biagios-projects-a2a85c3e.vercel.app",
+  "https://frontend-28zdnh3a1-biagios-projects-a2a85c3e.vercel.app",
 ];
 
 const corsOptions = {
