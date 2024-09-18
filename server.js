@@ -18,7 +18,13 @@ const app = express();
 
 // Middleware di sicurezza
 app.use(helmet());
-app.use(cors({ origin: "frontend-woad-sigma-74.vercel.app" }));
+app.use(
+  cors({
+    origin: "frontend-woad-sigma-74.vercel.app",
+    credentials: true,
+  })
+);
+
 app.use(mongoSanitize());
 app.use(express.json());
 app.use(morgan("combined"));
