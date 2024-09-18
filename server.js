@@ -19,20 +19,7 @@ const app = express();
 // Middleware di sicurezza
 app.use(helmet());
 
-const allowedOrigins = ["https://frontend-28zdnh3a1-biagios-projects-a2a85c3e.vercel.app"];
-
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  credentials: true,
-};
-
-app.use(cors(corsOptions));
+app.use(cors());
 
 app.use(mongoSanitize());
 app.use(express.json());
