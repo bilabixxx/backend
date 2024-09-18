@@ -18,12 +18,23 @@ const app = express();
 
 // Middleware di sicurezza
 app.use(helmet());
-app.use(
-  cors({
-    origin: "frontend-woad-sigma-74.vercel.app",
-    credentials: true,
-  })
-);
+
+const allowedOrigins = [
+  "https://frontend-4297vdllv-biagios-projects-a2a85c3e.vercel.app",
+];
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
 
 app.use(mongoSanitize());
 app.use(express.json());
